@@ -19,3 +19,5 @@ dependencyResolutionManagement {
 rootProject.name = "RichKuikly"
 include(":androidApp")
 include(":shared")
+include(":h5App")
+include(":miniApp")
