@@ -1,7 +1,12 @@
 package com.leon.richkuikly
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import com.leon.richkuikly.base.BasePager
 import com.tencent.kuikly.compose.foundation.layout.Column
 import com.tencent.kuikly.compose.foundation.layout.fillMaxSize
@@ -16,7 +21,9 @@ import com.tencent.kuikly.compose.setContent
 import com.tencent.kuikly.compose.ui.Modifier
 import com.tencent.kuikly.compose.ui.unit.dp
 import com.tencent.kuikly.core.annotations.Page
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 @Page("router", supportInLocal = true)
 internal class ComposeRoutePager : BasePager() {
@@ -33,6 +40,13 @@ internal class ComposeRoutePager : BasePager() {
         val tabs = listOf("首页", "Playground", "消息", "我的")
         val pagerState = rememberPagerState(pageCount = { tabs.size })
         val coroutineScope = rememberCoroutineScope()
+        var textFieldValue by remember { mutableStateOf("") }
+
+        LaunchedEffect(1) {
+            withContext(Dispatchers.Main) {
+                textFieldValue = ""
+            }
+        }
         Column(
             modifier =
                 Modifier

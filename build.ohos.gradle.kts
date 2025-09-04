@@ -8,30 +8,3 @@ plugins {
     id("org.jetbrains.compose").version("1.7.3").apply(false)
     kotlin("plugin.compose").version("2.0.21-KBA-004").apply(false)
 }
-
-buildscript {
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-        mavenLocal()
-        maven {
-            url = uri("https://central.sonatype.com/repository/maven-snapshots/")
-        }
-    }
-
-    dependencies {
-        classpath(BuildPlugin.kuikly)
-    }
-}
-
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-        mavenLocal()
-        maven {
-            url = uri("https://central.sonatype.com/repository/maven-snapshots/")
-        }
-    }
-}
